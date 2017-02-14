@@ -58,13 +58,13 @@ Node.js\footnote{\url{https://nodejs.org/}} é uma plataforma de aplicações ba
 \begin{figure}[htb]
 	\caption{\label{fig:codejs}Código exemplo de servidor em nodejs}
 	\begin{center}
-		\includegraphics[width=0.50\textwidth]{img/codejs.png}
+		\includegraphics[width=0.90\textwidth]{img/codejs.png}
 	\end{center}
 	\legend{Fonte: elaborado pela autora}
 \end{figure}
 Essa plataforma funciona com base em um modelo voltado à eventos, ou seja, a execução não é bloqueada com eventos de entrada e saída (I/O), como nos demais modelos. O Node dispara funções específicas quando os eventos são acionados. Além disso, o Nodejs também possui um gerenciador de pacotes, o \textit{Node Package Manager} (denominado \textit{npm}). Seu objetivo é a instalação e distribuição de pacotes e bibliotecas criadas pela comunidade e que tenham código livre, o que permite que qualquer desenvolvedor disponibilize sua própria biblioteca.
 
-Pacotes criados da maneira descrita anteriormente têm suas informações salvas em um arquivo chamado \textit{packages.json}, o qual contém informações como Nome do projeto, do criador, link para o repositório no GitHub, dependências de bibliotecas com a versão específica instalada, entre outros. Através do comando \textit{npm install} o gerenciador baixa e instala as dependências do módulo para executar a aplicação.A plataforma é acessível via terminal de comandos e está disponível para Windows, Mac OS e sistemas operacionais baseados em Linux. Neste projeto, a versão utilizada da plataforma Nodejs foi a 6.6.0. 
+Pacotes criados da maneira descrita anteriormente têm suas informações salvas em um arquivo chamado \textit{packages.json}, o qual contém informações como Nome do projeto, do criador, link para o repositório no GitHub, dependências de bibliotecas com a versão específica instalada, entre outros. Através do comando \textit{npm install} o gerenciador instala as dependências do módulo para executar a aplicação. A plataforma é acessível via terminal de comandos e está disponível para Windows, Mac OS e sistemas operacionais baseados em Linux. Neste projeto, a versão utilizada da plataforma Nodejs foi a 6.6.0. 
 
 
 
@@ -82,9 +82,9 @@ A figura \ref{fig:codejs} apresenta um exemplo de código para servidor configur
 \section{Métodos e Etapas}\label{sec:metodos-etapas}
 % ----------------------------------------------------------
 
-A primeira fase deste trabalho se concentra no levantamento bibliográfico sobre \textit{Cloud Computing}, balanceamento de carga e Redes Neurais Artificiais. Nesta fase, o estudo se concentrou na pesquisa de serviços de \textit{Cloud} disponíveis no mercado, visto que o teste da ferramenta foi realizado a partir de uma infraestrutura hospedada em uma \textit{Cloud} real. 
+A primeira fase deste trabalho se concentrou-se no levantamento bibliográfico sobre \textit{Cloud Computing}, balanceamento de carga e Redes Neurais Artificiais. Nesta fase, o estudo se concentrou na pesquisa de serviços de \textit{Cloud} disponíveis no mercado, visto que o teste da ferramenta foi realizado a partir de uma infraestrutura hospedada em uma \textit{Cloud} real. 
 
-A fase seguinte concentra-se na análise e levantamento das tecnologias utilizadas na implementação da estrutura para testes, inicialmente estudando tecnologias como a ferramenta CloudStack \cite{cloudstack} e a OpenStack \cite{openstack}. Devido à necessidade de possuir uma estrutura de servidores física, ambas as opções citadas foram descartadas e o serviço escolhido foi a EC2\cite{AmazonEC2}, fornecido pela AWS. Durante essa fase, ainda, houve o planejamento e estruturação do módulo que engloba a RNA, bem como sua arquitetura, posteriormente integrada ao módulo de balanceamento de carga. A arquitetura escolhida segue a estrutura descrita pela figura \ref{fig:arq}. 
+A fase seguinte concentrou-se na análise e levantamento das tecnologias utilizadas na implementação da estrutura para testes, inicialmente estudando tecnologias como a ferramenta CloudStack \cite{cloudstack} e a OpenStack \cite{openstack}. Devido à necessidade de possuir uma estrutura de servidores física, ambas as opções citadas foram descartadas e o serviço escolhido foi a EC2\cite{AmazonEC2}, fornecido pela AWS. Durante essa fase, ainda, houve o planejamento e estruturação do módulo que engloba a RNA, bem como sua arquitetura, posteriormente integrada ao módulo de balanceamento de carga. A arquitetura escolhida segue a estrutura descrita pela figura \ref{fig:arq}. 
 
 \begin{figure}[htb]
 	\caption{\label{fig:arq}Arquitetura simplificada do projeto}
@@ -94,6 +94,6 @@ A fase seguinte concentra-se na análise e levantamento das tecnologias utilizad
 	\legend{Fonte: elaborado pela autora}
 \end{figure}
 
-A arquitetura do projeto pode ser dividida em três módulos, como ilustrado na figura \ref{fig:arq}: o primeiro, consiste no servidor responsável pelo balanceamento de carga, o qual recebe todas as requisições que serão posteriormente direcionadas para o \textit{cluster} de servidores de dados; o segundo módulo é composto pelo \textit{cluster} de servidores de dados; e o terceiro é um servidor que gera requisições. Nesta arquitetura, a rede neural é um submódulo do balanceador, sendo responsável pela atribuição de pesos à cada um dos servidores presentes no \textit{cluster} de dados. Estes pesos são utilizados pelo algoritmo de balanceamento para direcionar as requisições aos servidores de modo equilibrado. 
+A arquitetura do protótipo pode ser dividida em três módulos, como ilustrado na figura \ref{fig:arq}: o primeiro, consiste no servidor responsável pelo balanceamento de carga, o qual recebe todas as requisições que serão posteriormente direcionadas para o \textit{cluster} de servidores de dados; o segundo módulo é composto pelo \textit{cluster} de servidores de dados; e o terceiro é um servidor que gera requisições. Nesta arquitetura, a rede neural é um submódulo do balanceador, sendo responsável pela atribuição de pesos à cada um dos servidores presentes no \textit{cluster} de dados. Estes pesos são utilizados pelo algoritmo de balanceamento para direcionar as requisições aos servidores de modo equilibrado. 
 
-A terceira fase do projeto concentrou-se na implementação e testes do módulo de balanceamento. Nessa fase, o estudo das tecnologias Nodejs e EC2 permitiu a implementação da aplicação e os testes com \textit{clusters} em nuvem.  Essa fase abrange, ainda, a análise do desempenho da abordagem escolhida, cujo resultado está descrito na seção de Resultados. A fase final do projeto se concentrou na escrita do relatório e apresentação dos resultados obtidos. 
+A terceira fase do projeto concentrou-se na implementação e testes do módulo de balanceamento. Nessa fase, o estudo das tecnologias Nodejs e EC2 permitiu a implementação da aplicação e os testes com \textit{clusters} em nuvem.  Essa fase contemplou, ainda, a análise do desempenho da abordagem escolhida, cujo resultado está descrito na seção de Resultados. A fase final do projeto se concentrou na escrita do relatório e apresentação dos resultados obtidos. 

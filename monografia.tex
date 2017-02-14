@@ -47,7 +47,7 @@
 \usepackage{lipsum}				% para geração de dummy text
 \usepackage{customizacoes} 		% customizações feitas pelo autor
 % ----------------------------------------------------------
-
+\usepackage{pdfpages}
 
 % ----------------------------------------------------------
 % Pacotes de citações
@@ -240,31 +240,35 @@
 %		\end{center}
 %	\end{fichacatalografica}
 
-\begin{fichacatalografica}
-	\ttfamily
-	\vspace*{\fill}					% Posição vertical
-	\hspace{1.5cm}
-	\begin{centering}	% Minipage Centralizado
-		\fbox{\begin{minipage}[c][7.5cm]{12.5cm}		% Largura
-				\footnotesize
-				\vspace{0.3cm}
-				\hspace{2.0cm} Setoue, Karoline Kimiko Figueiredo.
-				%Sobrenome, Nome do autor
-				
-				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} Aplicação de redes neurais artificiais no balanceamento de carga em serviços de nuvem / \imprimirautor, \imprimirdata} \\	
-				
-				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} \pageref{LastPage} f. : il.} \\
-				
-				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} \imprimirorientador} \\
-				
-				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} Monografia (Graduação)~--~Universidade Estadual \\ Paulista. Faculdade de Ciências, Bauru, 2017 \\}  
-				\\	
-				
-				
-				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} 1. Balanceamento de carga. 2. Redes neurais artificiais. \\ 3. Computação em nuvem. I. Universidade \\ Estadual Paulista. Faculdade de Ciências. II. Título.}	
-			\end{minipage}}
-		\end{centering}
-\end{fichacatalografica}
+%\begin{fichacatalografica}
+%	\ttfamily
+%	\vspace*{\fill}					% Posição vertical
+%	\hspace{1.5cm}
+%	\begin{centering}	% Minipage Centralizado
+%		\fbox{\begin{minipage}[c][7.5cm]{12.5cm}		% Largura
+%				\footnotesize
+%				\vspace{0.3cm}
+%				\hspace{2.0cm} Setoue, Karoline Kimiko Figueiredo.
+%				%Sobrenome, Nome do autor
+%				
+%				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} Aplicação de redes neurais artificiais no balanceamento de carga em serviços de nuvem / \imprimirautor, \imprimirdata} \\	
+%				
+%				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} \pageref{LastPage} f. : il.} \\
+%				
+%				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} \imprimirorientador} \\
+%				
+%				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} Monografia (Graduação)~--~Universidade Estadual \\ Paulista. Faculdade de Ciências, Bauru, 2017 \\}  
+%				\\	
+%				
+%				
+%				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} 1. Balanceamento de carga. 2. Redes neurais artificiais. \\ 3. Computação em nuvem. I. Universidade \\ Estadual Paulista. Faculdade de Ciências. II. Título.}	
+%			\end{minipage}}
+%		\end{centering}
+%\end{fichacatalografica}
+
+ \begin{fichacatalografica}
+     \includepdf{ficha.pdf}
+ \end{fichacatalografica}
 % ----------------------------------------------------------
 
 
@@ -559,14 +563,15 @@
 % ----------------------------------------------------------
 \chapter{Conclusão}
 % ----------------------------------------------------------
-O presente trabalho apresenta uma aplicação de balanceamento de cargas utilizando Redes Neurais Artificiais como Perceptron, como um módulo funcional de balanceamento de requisições. Seu desempenho foi analisado através da comparação com um algoritmo conhecido e bastante usado, o Round Robin. 
+O presente trabalho apresenta uma aplicação de balanceamento de cargas utilizando Redes Neurais Artificiais como um módulo funcional de balanceamento de requisições. Seu desempenho foi analisado através da comparação com um algoritmo conhecido e bastante usado, o Round Robin. 
 
-Os testes demonstram ganho significativo no uso da RNA. Portanto, nas condições em que os testes foram realizados, podemos considerar o Round Robin como melhor alternativa, se levarmos em conta a simplicidade de sua implementação.  
-No entanto, visto que o modelo proposto neste trabalho leva em consideração os estados mais recentes dos servidores, levando em conta seu último estado, esta implementação tende a apresentar melhor desempenho, visto que a distribuição das cargas se dá pela avaliação de estados como falhas de conexão e estado do servidor, por exemplo.
+Os testes não demonstram ganho significativo no uso da RNA. Portanto, nas condições em que os testes foram realizados, pode-se considerar o Round Robin como melhor alternativa, se levarmos em conta a simplicidade de sua implementação. Considerando o ambiente em que foram realizados os testes, que pode ser considerado estável e com servidores do mesmo tipo, o algoritmo de balanceamento com RNA não se destacou. Porém, foi possível perceber que a característica que mais influenciou a classificação foi o tempo de resposta dos servidores. 
+
+O modelo proposto neste trabalho leva em consideração os estados mais recentes dos servidores, levando em conta seu último estado, o que o torna mais dinâmico se comparado com o Round Robin. Esta implementação pode apresentar melhor desempenho em ambientes mais instáveis, visto que a distribuição das cargas se dá pela avaliação de estados como falhas de conexão e estado do servidor, por exemplo e seria interessante simular ambientes deste tipo em trabalhos futuros, para avaliar o desempenho da abordagem proposta. 
 
 
 % ---
-\subsection{Trabalhos futuros}\label{sec:futuro}
+\section{Trabalhos futuros}\label{sec:futuro}
 % ---
 Como sugestão de trabalhos futuros pode-se considerar analisar o desempenho da arquitetura desta aplicação de balanceamento em ambientes instáveis, com servidores distintos. Além disto, propor outras características e avaliar o desempenho com base nesta escolha. Em relação à rede, testar e avaliar o desempenho da aplicação com outras arquiteturas de Redes Neurais Artificiais, com mais camadas, por exemplo. 
 % ----------------------------------------------------------

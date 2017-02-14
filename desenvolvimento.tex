@@ -7,7 +7,7 @@
 
 A arquitetura implementada para o módulo de balanceamento segue a proposta apresentada na figura \ref{fig:arq}. O processo de desenvolvimento foi dividido em módulos: \textit{Load Balancer} (balanceador de carga), \textit{Neural Network} (Rede Neural), \textit{Request Server} (servidor de requisições) e \textit{Servers}, sendo os dois primeiros parte integrante do protótipo de balanceamento de carga e os dois últimos utilizados para teste do protótipo. 
 
-O \textbf{módulo de \textit{servers}} é composto por dois servidores do tipo t2.micro, conforme descrito na tabela \ref{tab:servidores}, cada um deles configurado como um servidor que recebe requisições em uma porta especifica e retorna o conteúdo solicitado. O objetivo do módulo do balanceador de carga é distribuir a carga de requisições entre estes servidores. Para executar e configurar estes servidores, fez-se uso do Nodejs, com código semelhante ao apresentado na seção \ref{sec:node-js}, cujo acesso está ilustrado na figura \ref{fig:serv-req}. 
+O \textbf{módulo de \textit{servers}} é composto por três servidores do tipo t2.micro, conforme descrito na tabela \ref{tab:servidores}, cada um deles configurado como um servidor que recebe requisições em uma porta especifica e retorna o conteúdo solicitado. O objetivo do módulo do balanceador de carga é distribuir a carga de requisições entre estes servidores. Para executar e configurar estes servidores, fez-se uso do Nodejs, com código semelhante ao apresentado na seção \ref{sec:node-js}, cujo acesso está ilustrado na figura \ref{fig:serv-req}. 
 \begin{figure}[htb]
 	\caption{\label{fig:serv-req}Conexão ao servidor de Requisições}
 	\begin{center}
@@ -39,7 +39,7 @@ Por fim, o \textbf{Módulo de Rede Neural} implementa a rede responsável por at
 \section{Arquitetura da Rede Neural}\label{sec:ann}
 % ---
 
-A seção \ref{sec:rna} apresenta alguns modelos de arquiteturas que podem ser aplicadas para resolver problemas de classificação. Como discutido nesta mesma seção, a arquitetura do tipo de RNA ou abordagem utilizada para resolver um problema que envolva aprendizado está diretamente relacionada ao tipo de problema que se deseja resolver com determinada técnica. Este trabalho tem definido em seus objetivos aplicar uma Rede Neural Artificial para aprender se os servidores gerenciados pelo \textbf{módulo de balanceamento} estão aptos a realizar uma requisição. 
+A seção \ref{sec:rna} apresenta alguns modelos de arquiteturas que podem ser aplicadas para resolver problemas de classificação. Como discutido na seção \ref{sec:rna}, a arquitetura do tipo de RNA ou abordagem utilizada para resolver um problema que envolva aprendizado está diretamente relacionada ao tipo de problema que se deseja resolver com determinada técnica. Este trabalho tem definido em seus objetivos aplicar uma Rede Neural Artificial para aprender se os servidores gerenciados pelo \textbf{módulo de balanceamento} estão aptos a realizar uma requisição. 
 
 Como discutido na seção \ref{sec:balanceamento-carga}, este tipo de aplicação deve considerar elementos como distribuição esparsa da arquitetura em núvem, capacidade de armazenamento, complexidade do algoritmo e pontos de falhas, tempo de resposta, utilização de recursos, dentre outros critérios que determinam a eficiência de uma aplicação de balanceamento. 
 
@@ -84,12 +84,12 @@ A discussão acerca da escolha destas características e sua efetividade é apre
 \textbf{Implementação da Rede Neural com Perceptron}
 
 
-A Rede Neural escolhida segue a ideia de Perceptron apresentada na seção \ref{sec:rna}. A rede contem três camadas: uma de entrada, uma escondida e uma camada de saída. Por se tratar de uma rede neural aplicada à balanceamento de carga, alguns conceitos foram levados em conta ao estabelecer a forma de aprendizado dinâmico.Pelas razões elencadas no início desta seção, a rede neural escolhida possui poucas camadas, como ilustrado pela figura \ref{fig:rede}, com o objetivo de aumentar a velocidade de processamento e garantir que o tempo de resposta do balanceador não seja tão afetado pelo tempo de processamento da RNA. Além disto, a quantidade de características e o tipo de saída esperada na arquitetura proposta por este projeto permitem uma implementação de uma rede deste tipo. 
+A Rede Neural escolhida segue a ideia de Perceptron apresentada na seção \ref{sec:rna}. A rede contem duas camadas: uma de entrada e uma camada de saída. Por se tratar de uma rede neural aplicada à balanceamento de carga, alguns conceitos foram levados em conta ao estabelecer a forma de aprendizado dinâmico. Pelas razões elencadas no início desta seção, a rede neural escolhida possui poucas camadas, como ilustrado pela figura \ref{fig:rede}, com o objetivo de aumentar a velocidade de processamento e garantir que o tempo de resposta do balanceador não seja tão afetado pelo tempo de processamento da RNA. Além disto, a quantidade de características e o tipo de saída esperada na arquitetura proposta por este projeto permitem uma implementação de uma rede deste tipo. 
 
 \begin{figure}[htb]
 	\caption{\label{fig:rede} Camadas implementadas na rede neural}
 	\begin{center}
-		\includegraphics[width=0.60\textwidth]{img/redeusada.png}
+		\includegraphics[width=0.70\textwidth]{img/redeusada.png}
 	\end{center}
 	\legend{Fonte: elaborada pela autora}
 \end{figure}
