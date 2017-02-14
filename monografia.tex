@@ -208,37 +208,63 @@
 %     \includepdf{fig_ficha_catalografica.pdf}
 % \end{fichacatalografica}
 
+%\begin{fichacatalografica}
+%	\sffamily
+%	\vspace*{\fill}					% Posição vertical
+%	\begin{center}					% Minipage Centralizado
+%		\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+%				\small
+%				\imprimirautor
+%				%Sobrenome, Nome do autor
+%				
+%				\hspace{0.5cm} \imprimirtitulo / \imprimirautor. --
+%				\imprimirlocal, \imprimirdata-
+%				
+%				\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+%				
+%				\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+%				
+%				\hspace{0.5cm}
+%				\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\\ \imprimirinstituicao,
+%					\imprimirdata.}\\
+%				
+%				\hspace{0.5cm}
+%				1. Balanceamento de Cargas.
+%				2. Redes Neurais Artificiais.
+%				3. Computação em Nuvem.
+%				I. \imprimirorientador.
+%				II. Universidade Estadual Paulista "Júlio de Mesquita Filho".
+%				III. Faculdade de Ciências.
+%				IV. \imprimirtitulo
+%			\end{minipage}}
+%		\end{center}
+%	\end{fichacatalografica}
+
 \begin{fichacatalografica}
-	\sffamily
+	\ttfamily
 	\vspace*{\fill}					% Posição vertical
-	\begin{center}					% Minipage Centralizado
-		\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
-				\small
-				\imprimirautor
+	\hspace{1.5cm}
+	\begin{centering}	% Minipage Centralizado
+		\fbox{\begin{minipage}[c][7.5cm]{12.5cm}		% Largura
+				\footnotesize
+				\vspace{0.3cm}
+				\hspace{2.0cm} Setoue, Karoline Kimiko Figueiredo.
 				%Sobrenome, Nome do autor
 				
-				\hspace{0.5cm} \imprimirtitulo / \imprimirautor. --
-				\imprimirlocal, \imprimirdata-
+				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} Aplicação de redes neurais artificiais no balanceamento de carga em serviços de nuvem / \imprimirautor, \imprimirdata} 	\\	
 				
-				\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} \pageref{LastPage} f. : il.} \\
 				
-				\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} \imprimirorientador} \\
 				
-				\hspace{0.5cm}
-				\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\\ \imprimirinstituicao,
-					\imprimirdata.}\\
+				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} Monografia (Graduação)~--~Universidade Estadual \\ Paulista. Faculdade de Ciências, Bauru, 2017 \\}  
+				\\	
 				
-				\hspace{0.5cm}
-				1. Balanceamento de Cargas.
-				2. Redes Neurais Artificiais.
-				3. Computação em Nuvem.
-				I. \imprimirorientador.
-				II. Universidade Estadual Paulista "Júlio de Mesquita Filho".
-				III. Faculdade de Ciências.
-				IV. \imprimirtitulo
+				
+				\hspace{2.0cm} \parbox[t]{\textwidth}{\hspace{0.5cm} 1. Balanceamento de carga. 2. Redes neurais artificiais. \\ 3. Computação em nuvem. I. Universidade \\ Estadual Paulista. Faculdade de Ciências. II. Título.}	
 			\end{minipage}}
-		\end{center}
-	\end{fichacatalografica}
+		\end{centering}
+\end{fichacatalografica}
 % ----------------------------------------------------------
 
 
@@ -284,15 +310,16 @@
 % \includepdf{folhadeaprovacao_final.pdf}
 %
 \begin{folhadeaprovacao}
+	
 	\begin{center}
-		{\ImprimirAutor}
+		{\ABNTEXchapterfont\large\imprimirautor}
 		
 		\vspace*{\fill}\vspace*{\fill}
 		\begin{center}
-			\bfseries\large\ImprimirTitulo
+			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
 		\end{center}
 		\vspace*{\fill}
-   
+		
 		\hspace{.45\textwidth}
 		\begin{minipage}{.5\textwidth}
 			\imprimirpreambulo
@@ -300,20 +327,29 @@
 		\vspace*{\fill}
 	\end{center}
 	
-	%Aprovado em \detokenize{21/01/2016}.
-	
-	\vspace*{\fill}
+	\center Banca Examinadora
 	\begin{center}
-		\uppercase{Banca examinadora}
+		\vspace*{0.5cm}
+		\textbf{\imprimirorientador} \\ Orientador \\ Universidade Estadual Paulista "Júlio de Mesquita Filho" \\ Departamento de computação\\ Faculdade de Ciências \\
 	\end{center}
-
-	\assinatura{\textbf{\imprimirorientador} \\ Orientador} 
-	\assinatura{\textbf{Profa. Dra. Simone das Graças Domingues Prado}}
-	\assinatura{\textbf{Profa. Dra. Roberta Spolon}}
+	\begin{center}
+		\vspace*{0.5cm}
+		\textbf{Profa. Dra. Simone das Graças Domingues Prado} \\ Universidade Estadual Paulista "Júlio de Mesquita Filho" \\ Departamento de computação\\ Faculdade de Ciências \\
+	\end{center}
+	\begin{center}
+		\vspace*{0.5cm}
+		\textbf{Profa. Dra. Roberta Spolon} \\ Universidade Estadual Paulista "Júlio de Mesquita Filho" \\ Departamento de computação\\ Faculdade de Ciências \\
+	\end{center}
 	%\assinatura{\textbf{Professor} \\ Convidado 3}
 	%\assinatura{\textbf{Professor} \\ Convidado 4}
-	\vspace*{\fill}
-
+	
+	\begin{center}
+		\vspace*{0.5cm}
+		\par
+		{Bauru, 07 de Fevereiro de 2017.}
+		\vspace*{1cm}
+	\end{center}
+	
 \end{folhadeaprovacao}
 % ----------------------------------------------------------
 
